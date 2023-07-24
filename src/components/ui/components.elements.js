@@ -31,12 +31,13 @@ export const Input = styled(({ ...props }) => <input {...props}></input>)`
   border-radius: 2rem;
   border: 1px solid transparent;
   padding: 1.2rem 1.8rem;
-  min-width: 280px;
+  min-width: ${(props) => (props.minwidth ? props.minwidth : "280px")};
   margin: 0;
   transition: all 0.2s ease-in-out;
   font-size: 18px;
   &::placeholder {
     font-size: 18px;
+    color: #aaa;
   }
   &:focus {
     border: 1px solid #6c6c6c;
@@ -78,6 +79,6 @@ export const Select = styled.select`
   }
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.9);
   }
 `;

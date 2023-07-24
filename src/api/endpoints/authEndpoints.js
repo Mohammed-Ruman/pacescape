@@ -1,10 +1,10 @@
-import { apiSlice} from "../../reduxSlices/authSlice"
+import { apiSlice } from "../apiSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation({
+    register: builder.mutation({
       query: (credentials) => ({
-        url: "/auth",
+        url: "/user/public/signup",
         method: "POST",
         body: { ...credentials },
       }),
@@ -15,5 +15,5 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation } = authApiSlice;
+export const { useRegisterMutation } = authApiSlice;
 export const { useLogoutQuery } = authApiSlice;
