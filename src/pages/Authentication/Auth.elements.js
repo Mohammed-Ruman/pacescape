@@ -48,7 +48,7 @@ export const LoginForm = styled(GridContainer)`
 
 export const LoginButton = styled.button`
   padding: 1.2rem 1.8rem;
-  margin-top: 1rem;
+
   font-size: 18px;
   color: white;
   background-color: #3564dd;

@@ -9,6 +9,8 @@ import Accounts from "./pages/Influencer/Accounts";
 import Messages from "./pages/Influencer/Messages";
 import Analytics from "./pages/Influencer/Analytics";
 import Campaign from "./pages/Influencer/Campaign";
+import YoutubeLogin from "./pages/Influencer/YoutubeLogin";
+import InstagramLogin from "./pages/Influencer/InstagramLogin";
 
 function App() {
   return (
@@ -17,14 +19,17 @@ function App() {
       <Router>
         <Routes>
           {/* Auth routes */}
-          <Route path="/auth" element={<AuthLayout />}>
-            <Route path="/auth/login" element={<Login />}></Route>
-            <Route path="/auth/register" element={<Register />}></Route>
+
+          <Route path="/" element={<AuthLayout />}>
+            <Route path="/" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
           </Route>
           {/* User Routes */}
           <Route path="/user" element={<UserLayout />}>
             <Route path="/user/dashboard" element={<Dashboard />}></Route>
             <Route path="/user/accounts" element={<Accounts />}></Route>
+            <Route path="/user/accounts/youtube" element={<YoutubeLogin />}></Route>
+            <Route path="/user/accounts/instagram" element={<InstagramLogin />}></Route>
             <Route path="/user/messages" element={<Messages />}></Route>
             <Route path="/user/analytics" element={<Analytics />}></Route>
             <Route path="/user/campaign" element={<Campaign />}></Route>

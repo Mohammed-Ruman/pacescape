@@ -36,6 +36,13 @@ export const Heading = styled.h1`
   font-size: 28px;
   margin: 0;
 `;
+export const Heading2 = styled.h2`
+  color: #222;
+  font-weight: 500;
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+`;
 export const LightText = styled.p`
   color: #6c6c6c;
   font-weight: 400;
@@ -49,8 +56,8 @@ export const AnchorText = styled.p`
   font-size: 16px;
   margin: 0;
   text-align: ${(props) => props.talign};
-  
-  display: inline;  
+
+  display: inline;
   &:hover {
     cursor: pointer;
     color: #0000ff99;

@@ -4,14 +4,25 @@ import TextInput from "../../components/ui/TextInput";
 import { AnchorText, LightText } from "../../Global";
 import { useNavigate } from "react-router-dom";
 import PasswordField from "../../components/ui/PasswordField";
+import { useLoginMutation } from "../../api/endpoints/authEndpoints";
 
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [login, { isLoading: isLoginLoading }] = useLoginMutation();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log("Login CLicked");
+    try {
+      const res = await login({
+        userName: userName,
+        password: password,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
     navigate("/user/dashboard");
   };
   return (
@@ -31,7 +42,7 @@ function Login() {
       <LoginButton onClick={handleLogin}>Login</LoginButton>
       <LightText>
         New to Pacescape?{" "}
-        <AnchorText onClick={() => navigate("/auth/register")}>
+        <AnchorText onClick={() => navigate("/register")}>
           Register
         </AnchorText>
       </LightText>
