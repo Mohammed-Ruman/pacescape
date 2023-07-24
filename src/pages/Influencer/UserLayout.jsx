@@ -38,7 +38,7 @@ function UserLayout() {
     navigate("/user/" + item);
   };
   return (
-    <GridContainer columns="300px 1fr" align="flex-start">
+    <GridContainer columns="300px 1fr" align="flex-start" gap="0">
       <SideBarContainer>
         <aside>
           <GridContainer columns="48px 1fr">
@@ -126,9 +126,9 @@ function UserLayout() {
           </GridContainer>
         </aside>
       </SideBarContainer>
-      <GridContainer style={{ position: "relative", height: "100vh" }}>
+      <div style={{ position: "relative", height: "100vh",padding:"1rem" }}>
         <Outlet />
-      </GridContainer>
+      </div>
     </GridContainer>
   );
 }

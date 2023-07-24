@@ -63,3 +63,21 @@ export const AnchorText = styled.p`
     color: #0000ff99;
   }
 `;
+
+
+//BUttons
+export const LinkButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.7rem 1rem;
+  color: #fff;
+  background-color: #3564dd;
+  border-radius: 4px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #3564dd99;
+  }
+`;

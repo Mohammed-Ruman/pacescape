@@ -1,11 +1,11 @@
 import React from "react";
-import { GridContainer, Heading, Heading2, LightText } from "../../Global";
+import { GridContainer, Heading, Heading2, LightText, LinkButton } from "../../Global";
 
 //Styled Components
 import {
   AccountsContainer,
   InstagramIcon,
-  LinkButton,
+
   YoutubeIcon,
 } from "./User.elements";
 

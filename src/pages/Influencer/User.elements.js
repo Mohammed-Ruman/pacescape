@@ -4,6 +4,7 @@ import {
   BiSolidDashboard,
   BiSolidUserAccount,
   BiMessageSquareDetail,
+  BiSolidShareAlt,
 } from "react-icons/bi";
 import { MdCampaign, MdAnalytics } from "react-icons/md";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
@@ -57,7 +58,7 @@ export const MenuItem = styled.li`
 export const AvatarContainer = styled.div`
   position: relative;
   border-radius: 50%;
-  box-shadow: -7px 0px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: -7px 0px 10px 0px rgba(0, 0, 0, 0.1);
   border: 2px solid #fff;
   background-color: grey;
   overflow: hidden;
@@ -96,6 +97,11 @@ export const SettingsIcon = styled(AiOutlineSetting)`
   height: 32px;
   width: 32px;
 `;
+export const ShareIcon = styled(BiSolidShareAlt)`
+  color: #fff;
+  height: 18px;
+  width: 18px;
+`;
 export const YoutubeIcon = styled(FaYoutube)`
   background-color: #fcf1f1;
   color: red;
@@ -111,22 +117,6 @@ export const InstagramIcon = styled(FaInstagram)`
   padding: 8px;
   height: 36px;
   width: 36px;
-`;
-
-export const LinkButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0.7rem 1rem;
-  color: #fff;
-  background-color: #3564dd;
-  border-radius: 4px;
-  border: none;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #3564dd99;
-  }
 `;
 
 //Accouts
