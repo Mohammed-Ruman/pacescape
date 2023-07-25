@@ -5,18 +5,22 @@ import { EyeInVisible, EyeVisible } from "./components.elements";
 function PasswordField(props) {
   const [visible, setVisible] = useState(false);
   return (
-    <GridContainer justify="flex-start" rgap="4px">
+    <GridContainer
+      style={{ position: "relative" }}
+      justify="flex-start"
+      columns="1fr"
+      rgap="4px"
+    >
       <Label>Password </Label>
-      <div style={{ position: "relative" }}>
-        <div style={{ position: "absolute", right: "1.8rem", top: "1.2rem" }}>
-          {visible ? (
-            <EyeVisible onClick={() => setVisible(false)} />
-          ) : (
-            <EyeInVisible onClick={() => setVisible(true)} />
-          )}
-        </div>
-        <Input type={visible ? "text" : "password"} {...props}></Input>
+
+      <div style={{ position: "absolute", right: "1.8rem", top: "2.8rem" }}>
+        {visible ? (
+          <EyeVisible onClick={() => setVisible(false)} />
+        ) : (
+          <EyeInVisible onClick={() => setVisible(true)} />
+        )}
       </div>
+      <Input type={visible ? "text" : "password"} {...props}></Input>
     </GridContainer>
   );
 }

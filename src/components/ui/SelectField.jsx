@@ -7,8 +7,10 @@ function SelectField(props) {
     <GridContainer justify="flex-start" rgap="4px">
       <Label>{props.title} </Label>
       <Select {...props}>
-        {props.options?.map((opt) => (
-          <option value={opt}>{opt}</option>
+        {props.options?.map((opt, i) => (
+          <option key={i} value={opt}>
+            {opt}
+          </option>
         ))}
       </Select>
     </GridContainer>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 //Styled Components
 import { GridContainer, Heading, LightText, AnchorText } from "../../Global";
-import { LoginButton, LoginForm } from "./Auth.elements";
+import { LoginButton, LoginForm, FormContainer } from "./Auth.elements";
 import { Label } from "../../components/ui/components.elements";
 
 //Components
@@ -16,7 +16,7 @@ import { useRegisterMutation } from "../../api/endpoints/authEndpoints";
 
 //Form Validation
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 function Register() {
@@ -82,137 +82,130 @@ function Register() {
   };
 
   return (
-    <LoginForm rgap="8px">
+    <LoginForm columns="1fr" rgap="8px">
       <Heading talign="center">Create an account</Heading>
       <LightText talign="center">Start Your 30 day free trial</LightText>
-      <form>
-        <GridContainer
-          margin="2rem 0 0 0"
-          columns="repeat(auto-fill,minmax(600px,auto))"
-          rgap="12px"
-        >
-          <GridContainer
-            justify="flex-start"
-            columns="repeat(auto-fill,minmax(200px,auto))"
-            gap="1rem"
-          >
-            <TextInput
-              name="firstName"
-              value={formData.firstName}
-              minwidth="200px"
-              placeholder="John"
-              title="First Name"
-              onChange={(e) => {
-                dispatch({ type: ACTIONS.firstName, payload: e.target.value });
-              }}
-            ></TextInput>
-            <TextInput
-              name="lastName"
-              value={formData.lastName}
-              minwidth="200px"
-              placeholder=" Doe"
-              title="Last Name"
-              onChange={(e) => {
-                dispatch({ type: ACTIONS.lastName, payload: e.target.value });
-              }}
-            ></TextInput>
-          </GridContainer>
-          <GridContainer
-            columns="repeat(auto-fill,minmax(280px,auto) )"
-            justify="flex-start"
-          >
-            <TextInput
-              name="email"
-              value={formData.email}
-              placeholder="johndoe@gmail.com"
-              title="Email"
-              onChange={(e) => {
-                dispatch({ type: ACTIONS.email, payload: e.target.value });
-              }}
-            ></TextInput>
-            <TextInput
-              name="phone"
-              value={formData.phone}
-              minwidth="200px"
-              placeholder="12345 67890"
-              title="Phone"
-              onChange={(e) => {
-                dispatch({ type: ACTIONS.phone, payload: e.target.value });
-              }}
-            ></TextInput>
-          </GridContainer>
-          <GridContainer
-            columns="repeat(auto-fill,minmax(180px,auto) )"
-            justify="flex-start"
-          >
-            <TextInput
-              name="dateOfBirth"
-              value={formData.dateOfBirth}
-              minwidth="150px"
-              placeholder="johndoe@gmail.com"
-              title="Date of Birth"
-              type="date"
+
+      <GridContainer
+        justify="flex-start"
+        columns="repeat(auto-fill,minmax(200px,1fr))"
+        gap="1rem"
+      >
+        <TextInput
+          name="firstName"
+          value={formData.firstName}
+          minwidth="200px"
+          placeholder="John"
+          title="First Name"
+          onChange={(e) => {
+            dispatch({ type: ACTIONS.firstName, payload: e.target.value });
+          }}
+        ></TextInput>
+        <TextInput
+          name="lastName"
+          value={formData.lastName}
+          minwidth="200px"
+          placeholder=" Doe"
+          title="Last Name"
+          onChange={(e) => {
+            dispatch({ type: ACTIONS.lastName, payload: e.target.value });
+          }}
+        ></TextInput>
+      </GridContainer>
+      <GridContainer
+        columns="repeat(auto-fill,minmax(280px,1fr))"
+        justify="flex-start"
+      >
+        <TextInput
+          name="email"
+          value={formData.email}
+          placeholder="johndoe@gmail.com"
+          title="Email"
+          onChange={(e) => {
+            dispatch({ type: ACTIONS.email, payload: e.target.value });
+          }}
+        ></TextInput>
+        <TextInput
+          name="phone"
+          value={formData.phone}
+          minwidth="200px"
+          placeholder="12345 67890"
+          title="Phone"
+          onChange={(e) => {
+            dispatch({ type: ACTIONS.phone, payload: e.target.value });
+          }}
+        ></TextInput>
+      </GridContainer>
+      <GridContainer
+        columns="repeat(auto-fill,minmax(180px,1fr) )"
+        justify="flex-start"
+      >
+        <TextInput
+          name="dateOfBirth"
+          value={formData.dateOfBirth}
+          minwidth="150px"
+          placeholder="johndoe@gmail.com"
+          title="Date of Birth"
+          type="date"
+          onChange={(e) => {
+            dispatch({
+              type: ACTIONS.dateOfBirth,
+              payload: e.target.value,
+            });
+          }}
+        ></TextInput>
+        <SelectField
+          value={formData.role}
+          onChange={(e) => {
+            dispatch({
+              type: ACTIONS.role,
+              payload: e.target.value,
+            });
+          }}
+          options={["Creator", "Brand"]}
+          title="Join as"
+        ></SelectField>
+        <div>
+          <Label>Gender</Label>
+
+          <LightText>
+            <input
+              type="radio"
+              name="gender"
+              value="Male"
               onChange={(e) => {
                 dispatch({
-                  type: ACTIONS.dateOfBirth,
+                  type: ACTIONS.gender,
                   payload: e.target.value,
                 });
               }}
-            ></TextInput>
-            <SelectField
-              value={formData.role}
+            />
+            Male
+          </LightText>
+
+          <LightText>
+            <input
+              type="radio"
+              name="gender"
+              value="Female"
               onChange={(e) => {
                 dispatch({
-                  type: ACTIONS.role,
+                  type: ACTIONS.gender,
                   payload: e.target.value,
                 });
               }}
-              options={["Creator", "Brand"]}
-              title="Join as"
-            ></SelectField>
-            <div>
-              <Label>Gender</Label>
+            />
+            Female
+          </LightText>
+        </div>
+      </GridContainer>
 
-              <LightText>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Male"
-                  onChange={(e) => {
-                    dispatch({
-                      type: ACTIONS.gender,
-                      payload: e.target.value,
-                    });
-                  }}
-                />
-                Male
-              </LightText>
+      <PasswordField placeholder="*******" title="Password"></PasswordField>
 
-              <LightText>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Female"
-                  onChange={(e) => {
-                    dispatch({
-                      type: ACTIONS.gender,
-                      payload: e.target.value,
-                    });
-                  }}
-                />
-                Female
-              </LightText>
-            </div>
-          </GridContainer>
-
-          <PasswordField placeholder="*******" title="Password"></PasswordField>
-        </GridContainer>
-        <LoginButton onClick={handleSubmit}>Sign Up</LoginButton>
-      </form>
+      <LoginButton onClick={handleSubmit}>Sign Up</LoginButton>
 
       <LightText talign="center">
-        Been here?{" "}
-        <AnchorText onClick={() => navigate("/")}>Login</AnchorText>
+        Been here? <AnchorText onClick={() => navigate("/")}>Login</AnchorText>
       </LightText>
     </LoginForm>
   );

@@ -9,14 +9,27 @@ import {
 import { MdCampaign, MdAnalytics } from "react-icons/md";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { AiOutlineSetting } from "react-icons/ai";
+
+export const UserLayoutContainer = styled(GridContainer)`
+  grid-template-columns: 300px 1fr;
+  gap: 0;
+  align-items: flex-start;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
 export const SideBarContainer = styled(GridContainer)`
   position: relative;
   padding: 2rem;
-  background-color: white;
+  background-color: #eee;
   height: 100vh;
   align-items: flex-start;
   place-content: flex-start;
   grid-template-columns: 1fr;
+  @media screen and (max-width: 561px) {
+    display: none;
+  }
 `;
 
 export const IconText = styled.h2`
@@ -53,6 +66,40 @@ export const MenuItem = styled.li`
     cursor: pointer;
     border: 2px solid #ccc;
   }
+  @media screen and (max-width: 561px) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    place-content: center;
+    gap: 0;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 0;
+    color: ${(props) => (props.selected ? "#3564dd" : "#6c6c6c")};
+    background-color: #eee;
+    &:hover {
+      border: 2px solid transparent;
+    }
+  }
+`;
+
+export const BottomNavbar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  & > ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  @media screen and (max-width: 561px) {
+    & > ul {
+      display: flex;
+    }
+    display: flex;
+  }
 `;
 
 export const AvatarContainer = styled.div`
@@ -68,27 +115,32 @@ export const AvatarContainer = styled.div`
 `;
 
 export const DashboardIcon = styled(BiSolidDashboard)`
+  margin: auto;
   color: inherit;
   height: 32px;
   width: 32px;
 `;
 export const AccountsIcon = styled(BiSolidUserAccount)`
   color: inherit;
+  margin: auto;
   height: 32px;
   width: 32px;
 `;
 export const CampaignIcon = styled(MdCampaign)`
   color: inherit;
+  margin: auto;
   height: 32px;
   width: 32px;
 `;
 export const AnalyticsIcon = styled(MdAnalytics)`
   color: inherit;
+  margin: auto;
   height: 32px;
   width: 32px;
 `;
 export const MessagesIcon = styled(BiMessageSquareDetail)`
   color: inherit;
+  margin: auto;
   height: 32px;
   width: 32px;
 `;
@@ -143,4 +195,40 @@ export const OnlineIcon = styled.div`
   width: 16px;
   background-color: green;
   border: 2px solid #fff;
+`;
+
+export const Table = styled.table`
+  border: 1px solid #ccc;
+  border-spacing: 0;
+  width: 600px;
+  & > thead > tr {
+    background-color: #eee;
+  }
+  & > thead > tr > th {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    font-weight: 400;
+    color: #6c6c6c;
+  }
+  & > thead > tr > th:first-child {
+    text-align: left;
+  }
+
+  & > tbody > tr > td {
+    /* border-bottom: 1px solid #ccc; */
+    padding: 0.7rem;
+    text-align: center;
+  }
+  & > tbody > tr > td:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+`;
+
+export const ActivityContainer = styled(GridContainer)`
+  grid-template-columns: auto 1fr;
+  align-items: flex-start;
+  padding: 8px;
+  background-color: #eee;
+  border-radius: 8px;
 `;

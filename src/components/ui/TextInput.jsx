@@ -4,7 +4,7 @@ import { GridContainer } from "../../Global";
 
 function TextInput(props) {
   return (
-    <GridContainer justify="flex-start" rgap="4px">
+    <GridContainer justify="flex-start" columns="1fr" rgap="4px">
       <Label>{props.title} </Label>
       <Input {...props}></Input>
     </GridContainer>

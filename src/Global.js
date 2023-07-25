@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #eee;
+    
   }
   *{
     box-sizing: border-box;
@@ -27,6 +27,13 @@ export const GridContainer = styled.div`
   row-gap: ${(props) => (props.rgap ? props.rgap : "1rem")};
 `;
 
+export const ScrollContainer = styled(GridContainer)`
+  place-content: start;
+  row-gap: 4px;
+  max-height: 300px;
+  overflow: auto;
+`;
+
 //Text Styles
 
 export const Heading = styled.h1`
@@ -39,7 +46,7 @@ export const Heading = styled.h1`
 export const Heading2 = styled.h2`
   color: #222;
   font-weight: 500;
-  text-align: center;
+  text-align: ${(props) => (props.talign ? props.talign : "center")};
   font-size: 20px;
   margin: 0;
 `;
@@ -50,10 +57,11 @@ export const LightText = styled.p`
   margin: 0;
   text-align: ${(props) => props.talign};
 `;
-export const AnchorText = styled.p`
+export const AnchorText = styled.a`
   color: blue;
   font-weight: 400;
   font-size: 16px;
+  text-decoration: none;
   margin: 0;
   text-align: ${(props) => props.talign};
 
@@ -63,7 +71,6 @@ export const AnchorText = styled.p`
     color: #0000ff99;
   }
 `;
-
 
 //BUttons
 export const LinkButton = styled.button`

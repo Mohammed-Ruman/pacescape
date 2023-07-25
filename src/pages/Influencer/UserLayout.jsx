@@ -19,6 +19,8 @@ import {
   SideBarContainer,
   IconText,
   SettingsIcon,
+  BottomNavbar,
+  UserLayoutContainer,
 } from "./User.elements";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
@@ -38,7 +40,7 @@ function UserLayout() {
     navigate("/user/" + item);
   };
   return (
-    <GridContainer columns="300px 1fr" align="flex-start" gap="0">
+    <UserLayoutContainer>
       <SideBarContainer>
         <aside>
           <GridContainer columns="48px 1fr">
@@ -105,13 +107,16 @@ function UserLayout() {
               </GridContainer>
             </AnchorText>
           </GridContainer>
-          <GridContainer margin="1rem 0" columns="repeat(auto-fill,minmax(20px,1fr))">
-            {dummyUsers.map((user) => (
-              <Avatar {...user} />
+          <GridContainer
+            margin="1rem 0"
+            columns="repeat(auto-fill,minmax(20px,1fr))"
+          >
+            {dummyUsers.map((user, i) => (
+              <Avatar key={i} {...user} />
             ))}
           </GridContainer>
           <GridContainer
-            style={{ position: "absolute", bottom: "1rem", left: "1rem"}}
+            style={{ position: "absolute", bottom: "1rem", left: "1rem" }}
             columns="36px max-content 36px"
             justify="flex-start"
           >
@@ -122,14 +127,54 @@ function UserLayout() {
                 <small>cragidenis@gmail.com</small>
               </LightText>
             </GridContainer>
-            <SettingsIcon/>
+            <SettingsIcon />
           </GridContainer>
         </aside>
       </SideBarContainer>
-      <div style={{ position: "relative", height: "100vh",padding:"1rem" }}>
+
+      <div style={{ position: "relative", height: "100vh", padding: "1rem" }}>
         <Outlet />
       </div>
-    </GridContainer>
+      <BottomNavbar>
+        <ul>
+          <MenuItem
+            onClick={() => handleMenuClick("dashboard")}
+            selected={location.pathname.includes("dashboard")}
+          >
+            <DashboardIcon />
+            Dashboard
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClick("accounts")}
+            selected={location.pathname.includes("accounts")}
+          >
+            <AccountsIcon />
+            My Accounts
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClick("campaign")}
+            selected={location.pathname.includes("campaign")}
+          >
+            <CampaignIcon />
+            Campaign
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClick("analytics")}
+            selected={location.pathname.includes("analytics")}
+          >
+            <AnalyticsIcon />
+            Analytics
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClick("messages")}
+            selected={location.pathname.includes("messages")}
+          >
+            <MessagesIcon />
+            Messages
+          </MenuItem>
+        </ul>
+      </BottomNavbar>
+    </UserLayoutContainer>
   );
 }
 

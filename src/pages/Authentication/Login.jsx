@@ -41,10 +41,8 @@ function Login() {
       ></PasswordField>
       <LoginButton onClick={handleLogin}>Login</LoginButton>
       <LightText>
-        New to Pacescape?{" "}
-        <AnchorText onClick={() => navigate("/register")}>
-          Register
-        </AnchorText>
+        New to Pacescape?
+        <AnchorText onClick={() => navigate("/register")}>Register</AnchorText>
       </LightText>
     </LoginForm>
   );

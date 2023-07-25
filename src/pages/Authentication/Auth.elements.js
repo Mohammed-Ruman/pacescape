@@ -10,6 +10,11 @@ export const LoginContainer = styled.div`
     background: #efb697;
   }
 `;
+export const FormContainer = styled.div`
+  margin: auto;
+  display: grid;
+  grid-template-areas: ". ." ". ." ". . .";
+`;
 export const LoginImage = styled.img`
   margin-left: -200px;
   margin-top: -30px;
@@ -34,11 +39,15 @@ export const ImgWrapper = styled(GridContainer)`
 
 export const LoginForm = styled(GridContainer)`
   row-gap: 8px;
+  max-width: 600px;
+  margin: auto;
   @media screen and (max-width: 768px) {
     position: absolute;
-    padding: 2rem 0;
+    padding: 2rem;
     top: 20vh;
-    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background-color: white;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -56,6 +65,7 @@ export const LoginButton = styled.button`
   border-radius: 2rem;
   font-weight: 600;
   transition: all 0.2s ease-in-out;
+  margin-top: 1rem;
   &:hover {
     cursor: pointer;
     background-color: #3564ddbb;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AnchorText, GridContainer, Heading, Heading2 } from "../../Global";
-import { YoutubeIcon } from "./User.elements";
+import { AccountsContainer, YoutubeIcon } from "./User.elements";
 import { FaYoutube } from "react-icons/fa";
 import TextInput from "../../components/ui/TextInput";
 import PasswordField from "../../components/ui/PasswordField";
@@ -10,7 +10,7 @@ function YoutubeLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <GridContainer>
+    <AccountsContainer>
       <FaYoutube
         style={{ color: "red", height: "56px", width: "56px", margin: "auto" }}
       ></FaYoutube>
@@ -23,7 +23,7 @@ function YoutubeLogin() {
 
       <AnchorText talign="center">Forgot Password?</AnchorText>
       <LoginButton>Sign In</LoginButton>
-    </GridContainer>
+    </AccountsContainer>
   );
 }
 

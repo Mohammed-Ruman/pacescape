@@ -26,7 +26,7 @@ export const EyeInVisible = styled(AiFillEyeInvisible)`
   }
 `;
 export const Input = styled(({ ...props }) => <input {...props}></input>)`
-  background-color: #ddd;
+  background-color: #eee;
   outline: none;
   border-radius: 2rem;
   border: 1px solid transparent;
@@ -43,7 +43,7 @@ export const Input = styled(({ ...props }) => <input {...props}></input>)`
     border: 1px solid #6c6c6c;
   }
   &:hover {
-    cursor: pointer;
+    cursor: text;
     border: 1px solid #6c6c6c;
   }
 `;
