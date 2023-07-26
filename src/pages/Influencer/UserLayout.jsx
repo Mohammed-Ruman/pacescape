@@ -25,16 +25,12 @@ import {
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import Avatar from "./helpers/Avatar";
+import UserStack from "./helpers/UserStack";
+import { dummyStackUsers } from "../../data/dummyData";
 
 function UserLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const dummyUsers = [
-    { name: "appe", online: true, image: logo },
-    { name: "appe", online: false, image: logo },
-    { name: "appe", online: false, image: logo },
-  ];
 
   const handleMenuClick = (item) => {
     navigate("/user/" + item);
@@ -107,14 +103,7 @@ function UserLayout() {
               </GridContainer>
             </AnchorText>
           </GridContainer>
-          <GridContainer
-            margin="1rem 0"
-            columns="repeat(auto-fill,minmax(20px,1fr))"
-          >
-            {dummyUsers.map((user, i) => (
-              <Avatar key={i} {...user} />
-            ))}
-          </GridContainer>
+          <UserStack users={dummyStackUsers} />
           <GridContainer
             style={{ position: "absolute", bottom: "1rem", left: "1rem" }}
             columns="36px max-content 36px"

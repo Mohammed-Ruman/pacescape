@@ -7,7 +7,7 @@ import {
   LinkButton,
   ScrollContainer,
 } from "../../Global";
-import { ShareIcon, Table } from "./User.elements";
+import { ShareIcon, Table, DashboardContainer } from "./User.elements";
 import image from "../../assets/images/logo.png";
 import {
   BarChart,
@@ -20,147 +20,20 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { PieChart, Pie, Sector } from "recharts";
+import { PieChart, Pie } from "recharts";
 
-import { FaEllipsisV, FaHamburger } from "react-icons/fa";
-import ActivityRow from "./helpers/ActivityRow";
-
-const data = [
-  {
-    name: "1",
-    James: 4000,
-    Kathryn: 2400,
-    amt: 2400,
-  },
-  {
-    name: "2",
-    James: 3000,
-    Kathryn: 1398,
-    amt: 2210,
-  },
-  {
-    name: "3",
-    James: 2000,
-    Kathryn: 9800,
-    amt: 2290,
-  },
-  {
-    name: "4",
-    James: 2780,
-    Kathryn: 3908,
-    amt: 2000,
-  },
-  {
-    name: "5",
-    James: 1890,
-    Kathryn: 4800,
-    amt: 2181,
-  },
-  {
-    name: "6",
-    James: 2390,
-    Kathryn: 3800,
-    amt: 2500,
-  },
-  {
-    name: "7",
-    James: 3490,
-    Kathryn: 4300,
-    amt: 2100,
-  },
-  {
-    name: "8",
-    James: 3490,
-    Kathryn: 4300,
-    amt: 2100,
-  },
-  {
-    name: "9",
-    James: 3490,
-    Kathryn: 4300,
-    amt: 2100,
-  },
-  {
-    name: "10",
-    James: 1490,
-    Kathryn: 4300,
-    amt: 2100,
-  },
-  {
-    name: "11",
-    James: 390,
-    Kathryn: 1300,
-    amt: 2100,
-  },
-  {
-    name: "12",
-    James: 3490,
-    Kathryn: 1300,
-    amt: 2100,
-  },
-];
-const pcData = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
+import { FaEllipsisV } from "react-icons/fa";
+import {
+  dummyActivities,
+  dummyUsers,
+  pcData,
+  statisticsData,
+} from "../../data/dummyData";
+import Activities from "./helpers/Activities";
 
 function Dashboard() {
-  const dummyUsers = [
-    {
-      name: "Kathryn Murphy",
-      views: 4000,
-      likes: 999,
-      income: "$900",
-      status: "new",
-    },
-    {
-      name: "James Harrid",
-      views: 15000,
-      likes: 999,
-      income: "$900",
-      status: "new",
-    },
-    {
-      name: "Elon Melon",
-      views: 12010,
-      likes: 999,
-      income: "$1000",
-      status: "new",
-    },
-  ];
-
-  const dummyActivities = [
-    {
-      image: image,
-      name: "Rahul",
-      desc: "Maecenas mauris nunc, hendrerit at ipsum vel, consectetur tempus ante. Cras ultricies.",
-    },
-    {
-      image: image,
-      name: "Chandan H P",
-      desc: "Maecenas mauris nunc, hendrerit at ipsum vel, consectetur tempus ante. Cras ultricies.",
-    },
-    {
-      image: image,
-      name: "Vinayak",
-      desc: "Maecenas mauris nunc, hendrerit at ipsum vel, consectetur tempus ante. Cras ultricies.",
-    },
-    {
-      image: image,
-      name: "Noel Lobo",
-      desc: "Maecenas mauris nunc, hendrerit at ipsum vel, consectetur tempus ante. Cras ultricies.",
-    },
-    {
-      image: image,
-      name: "Mahesh M",
-      desc: "Maecenas mauris nunc, hendrerit at ipsum vel, consectetur tempus ante. Cras ultricies.",
-    },
-  ];
-
   return (
-    <>
+    <DashboardContainer>
       <GridContainer columns="auto auto " justify="space-between">
         <Heading>Dashboard</Heading>
         <LinkButton>
@@ -168,7 +41,10 @@ function Dashboard() {
           Share
         </LinkButton>
       </GridContainer>
-      <GridContainer columns="3fr auto" align="flex-start" padding="1rem 0">
+      <GridContainer
+        align="flex-start"
+        columns="repeat(auto-fill,minmax(500px,1fr))"
+      >
         <GridContainer justify="flex-start">
           <GridContainer columns="auto auto" justify="space-between">
             <Heading2>Statistics</Heading2>
@@ -212,20 +88,16 @@ function Dashboard() {
             </Table>
           </GridContainer>
         </GridContainer>
-        <GridContainer justify="flex-start">
-          <GridContainer columns="auto auto" justify="space-between">
+        <GridContainer justify="flex-end">
+          {/* <GridContainer columns="auto auto" justify="space-between">
             <Heading2 talign="left">Activities</Heading2>
             <select>
               <option>Weekly</option>
               <option>Monthly</option>
               <option>Yearly</option>
             </select>
-          </GridContainer>
-          <ScrollContainer>
-            {dummyActivities.map((act) => (
-              <ActivityRow {...act}></ActivityRow>
-            ))}
-          </ScrollContainer>
+          </GridContainer> */}
+          <Activities data={dummyActivities} />
           <div>
             <Heading2 talign="left">Statistics</Heading2>
             <LightText>From 1-15 June, 2022</LightText>
@@ -233,7 +105,7 @@ function Dashboard() {
           <CustomPieChart />
         </GridContainer>
       </GridContainer>
-    </>
+    </DashboardContainer>
   );
 }
 
@@ -242,7 +114,7 @@ const Example = () => {
     <BarChart
       width={600}
       height={300}
-      data={data}
+      data={statisticsData}
       margin={{
         top: 20,
         right: 30,
@@ -273,6 +145,7 @@ const CustomPieChart = () => {
     outerRadius,
     percent,
     index,
+    name,
   }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -291,22 +164,43 @@ const CustomPieChart = () => {
     );
   };
   return (
-    <PieChart width={200} height={200}>
-      <Pie
-        data={pcData}
-        cx="50%"
-        cy="50%"
-        labelLine={false}
-        label={renderCustomizedLabel}
-        outerRadius={80}
-        fill="#8884d8"
-        dataKey="value"
-      >
-        {pcData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+    <GridContainer columns="1fr 100px" gap="0">
+      <PieChart width={200} height={200}>
+        <Pie
+          data={pcData}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="value"
+          nameKey="name"
+        >
+          {pcData.map((entry, index) => (
+            <Cell
+              label
+              key={`cell-${index}`}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+        </Pie>
+      </PieChart>
+      <GridContainer rgap="0" margin="auto 0 0 0" align="flex-end">
+        {pcData.map((pd, i) => (
+          <GridContainer columns="auto 1fr">
+            <div
+              style={{
+                height: "8px",
+                width: "8px",
+                backgroundColor: COLORS[i % COLORS.length],
+              }}
+            ></div>
+            <small style={{ margin: "0" }}>{pd.name}</small>
+          </GridContainer>
         ))}
-      </Pie>
-    </PieChart>
+      </GridContainer>
+    </GridContainer>
   );
 };
 

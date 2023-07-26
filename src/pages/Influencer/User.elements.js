@@ -7,7 +7,7 @@ import {
   BiSolidShareAlt,
 } from "react-icons/bi";
 import { MdCampaign, MdAnalytics } from "react-icons/md";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaEllipsisV, FaInstagram, FaPlus, FaYoutube } from "react-icons/fa";
 import { AiOutlineSetting } from "react-icons/ai";
 
 export const UserLayoutContainer = styled(GridContainer)`
@@ -27,7 +27,7 @@ export const SideBarContainer = styled(GridContainer)`
   align-items: flex-start;
   place-content: flex-start;
   grid-template-columns: 1fr;
-  @media screen and (max-width: 561px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
@@ -154,6 +154,20 @@ export const ShareIcon = styled(BiSolidShareAlt)`
   height: 18px;
   width: 18px;
 `;
+export const AddIcon = styled(FaPlus)`
+  color: #fff;
+  height: 18px;
+  width: 18px;
+`;
+export const EllipsisIcon = styled(FaEllipsisV)`
+  color: #222;
+  height: 18px;
+  width: 18px;
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
+`;
 export const YoutubeIcon = styled(FaYoutube)`
   background-color: #fcf1f1;
   color: red;
@@ -197,6 +211,7 @@ export const OnlineIcon = styled.div`
   border: 2px solid #fff;
 `;
 
+//Dashboard
 export const Table = styled.table`
   border: 1px solid #ccc;
   border-spacing: 0;
@@ -224,11 +239,84 @@ export const Table = styled.table`
     font-weight: 600;
   }
 `;
-
 export const ActivityContainer = styled(GridContainer)`
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+`;
+export const ActivityCard = styled(GridContainer)`
   grid-template-columns: auto 1fr;
   align-items: flex-start;
-  padding: 8px;
+  padding: 12px 8px;
+  background-color: #efefef;
+  border-radius: 8px;
+`;
+
+export const DashboardContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  max-width: 1280px;
+  margin: auto;
+  align-items: flex-start;
+  grid-template-rows: auto 1fr;
+  padding: 0;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+//Campaign
+
+export const CampaignContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: flex-start;
+`;
+
+export const CampaignBody = styled(GridContainer)`
+  align-items: flex-start;
+  grid-template-columns: 3fr 1fr;
+
+  @media screen and (max-width: 1068px) {
+    grid-template-columns: 3fr 2fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const TimelineContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  gap: 4px;
+`;
+export const HourLine = styled(GridContainer)`
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 40px 1fr;
+  gap: 4px;
+  & > p {
+    color: #ccc;
+    margin: 0;
+  }
+
+  & > hr {
+    width: 100%;
+    margin: 0;
+    border-top: 2px dotted #ccc;
+  }
+`;
+
+export const CampaignCardContainer = styled(GridContainer)`
+  grid-template-columns: 3fr 1fr auto;
+  padding: 0.7rem 1rem;
+
   background-color: #eee;
   border-radius: 8px;
+  & > div > b {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+  }
+  & > div > small {
+    color: #222;
+  }
 `;
