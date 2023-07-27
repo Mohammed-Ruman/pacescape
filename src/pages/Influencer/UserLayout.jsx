@@ -105,15 +105,17 @@ function UserLayout() {
           </GridContainer>
           <UserStack users={dummyStackUsers} />
           <GridContainer
-            style={{ position: "absolute", bottom: "1rem", left: "1rem" }}
-            columns="36px max-content 36px"
+            style={{ position: "absolute", bottom: "1rem", left: "1rem" ,right:"0"}}
+            columns="36px max-content auto"
             justify="flex-start"
           >
             <Avatar image={logo}></Avatar>
             <GridContainer justify="flex-start" rgap="0">
-              <b>Craig Denis</b>
-              <LightText>
-                <small>cragidenis@gmail.com</small>
+              <small>
+                <b>Craig Denis</b>
+              </small>
+              <LightText style={{ fontSize: "11px" }}>
+                cragidenis@gmail.com
               </LightText>
             </GridContainer>
             <SettingsIcon />
@@ -121,7 +123,7 @@ function UserLayout() {
         </aside>
       </SideBarContainer>
 
-      <div style={{ position: "relative", height: "100vh", padding: "1rem" }}>
+      <div style={{ position: "relative", height: "100vh" }}>
         <Outlet />
       </div>
       <BottomNavbar>

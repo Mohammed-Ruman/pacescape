@@ -1,6 +1,5 @@
 import image from "../assets/images/logo.png";
 
-
 export const statisticsData = [
   {
     name: "1",
@@ -185,9 +184,206 @@ export const dummyCampaigns = [
   },
 ];
 
-
 export const dummyStackUsers = [
   { name: "appe", online: true, image: image },
   { name: "appe", online: false, image: image },
   { name: "appe", online: false, image: image },
+];
+
+export const dummyMessageList = [
+  {
+    id: 2,
+    profile: image,
+    userName: "Cynthia Synder",
+    firstChat: "🤣👌",
+    timestamp: "09:00:00.000Z",
+  },
+  {
+    id: 3,
+    profile: image,
+    userName: "Hunter John",
+    firstChat: "Let's go for hunting bro!!",
+    timestamp: "09:00:00.000Z",
+  },
+  {
+    id: 4,
+    profile: image,
+    userName: "Super Man",
+    firstChat: "You:Hey lazer eyes!😎",
+    timestamp: "09:00:00.000Z",
+  },
+  {
+    id: 5,
+    profile: image,
+    userName: "Cynthia Synder",
+    firstChat: "Hi",
+    timestamp: "09:00:00.000Z",
+  },
+  {
+    id: 6,
+    profile: image,
+    userName: "Cynthia Synder",
+    firstChat: "Hi",
+    timestamp: "09:00:00.000Z",
+  },
+];
+export const dummyChatData2 = [
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+  {
+    sender: 1,
+    content: "Hello!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 2,
+    content: "Hi there! How can I help you?",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your products.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 2,
+    content: "Sure, go ahead and ask your question.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+];
+export const dummyChatData3 = [
+  {
+    sender: 1,
+    content: "hi!",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 3,
+    content: "hey wassup!",
+    timestamp: "2023-07-27T12:35:01",
+  },
+  {
+    sender: 1,
+    content: "I have a question about your diet.",
+    timestamp: "2023-07-27T12:35:10",
+  },
+  {
+    sender: 3,
+    content: "Sure, go ahead ask.",
+    timestamp: "2023-07-27T12:35:15",
+  },
+
+  {
+    sender: 1,
+    content: "How are you mainting the levels of protien in take?",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 3,
+    content: "I have this amazing app call ProDiet",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
+  {
+    sender: 1,
+    content: "cool i will download it then",
+    timestamp: "2023-07-27T12:34:56", // Use ISO format for timestamps
+  },
 ];

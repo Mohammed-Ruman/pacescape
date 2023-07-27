@@ -29,8 +29,9 @@ export const GridContainer = styled.div`
 
 export const ScrollContainer = styled(GridContainer)`
   place-content: start;
+  grid-template-columns: 1fr;
   row-gap: 4px;
-  max-height: 300px;
+  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "300px")};
   overflow: auto;
 `;
 
@@ -50,12 +51,23 @@ export const Heading2 = styled.h2`
   font-size: 20px;
   margin: 0;
 `;
+export const BoldText = styled.p`
+  color: #222;
+  font-weight: 600;
+
+  font-size: 14px;
+  margin: 0;
+`;
 export const LightText = styled.p`
   color: #6c6c6c;
   font-weight: 400;
   font-size: 18px;
   margin: 0;
   text-align: ${(props) => props.talign};
+`;
+export const SmallLightText = styled(LightText)`
+  color: #bbb;
+  font-size: 11px;
 `;
 export const AnchorText = styled.a`
   color: blue;

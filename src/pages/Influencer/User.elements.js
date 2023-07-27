@@ -5,13 +5,25 @@ import {
   BiSolidUserAccount,
   BiMessageSquareDetail,
   BiSolidShareAlt,
+  BiMessageAltDetail,
+  BiImage,
 } from "react-icons/bi";
-import { MdCampaign, MdAnalytics } from "react-icons/md";
-import { FaEllipsisV, FaInstagram, FaPlus, FaYoutube } from "react-icons/fa";
+import { MdCampaign, MdAnalytics, MdOutlineAttachFile } from "react-icons/md";
+import {
+  FaBell,
+  FaEllipsisH,
+  FaEllipsisV,
+  FaInstagram,
+  FaPhone,
+  FaPlus,
+  FaVideo,
+  FaYoutube,
+} from "react-icons/fa";
 import { AiOutlineSetting } from "react-icons/ai";
+import { GrLocation } from "react-icons/gr";
 
 export const UserLayoutContainer = styled(GridContainer)`
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 250px 1fr;
   gap: 0;
   align-items: flex-start;
 
@@ -21,12 +33,13 @@ export const UserLayoutContainer = styled(GridContainer)`
 `;
 export const SideBarContainer = styled(GridContainer)`
   position: relative;
-  padding: 2rem;
-  background-color: #eee;
+  padding: 0.7rem;
+  background-color: #fff;
   height: 100vh;
   align-items: flex-start;
   place-content: flex-start;
   grid-template-columns: 1fr;
+  border-right: 1px solid #eee;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -64,9 +77,9 @@ export const MenuItem = styled.li`
   border-radius: 8px;
   &:hover {
     cursor: pointer;
-    border: 2px solid #ccc;
+    background-color: ${(props) => (props.selected ? "#3564dd" : "#eee")};
   }
-  @media screen and (max-width: 561px) {
+  @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     justify-content: center;
     place-content: center;
@@ -94,7 +107,7 @@ export const BottomNavbar = styled.div`
     padding: 0;
     display: flex;
   }
-  @media screen and (max-width: 561px) {
+  @media screen and (max-width: 768px) {
     & > ul {
       display: flex;
     }
@@ -105,13 +118,13 @@ export const BottomNavbar = styled.div`
 export const AvatarContainer = styled.div`
   position: relative;
   border-radius: 50%;
-  box-shadow: -7px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  /* box-shadow: -7px 0px 10px 0px rgba(0, 0, 0, 0.1); */
   border: 2px solid #fff;
   background-color: grey;
   overflow: hidden;
 
-  height: 42px;
-  width: 42px;
+  height: 36px;
+  width: 36px;
 `;
 
 export const DashboardIcon = styled(BiSolidDashboard)`
@@ -146,8 +159,8 @@ export const MessagesIcon = styled(BiMessageSquareDetail)`
 `;
 export const SettingsIcon = styled(AiOutlineSetting)`
   color: #6c6c6c;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
 `;
 export const ShareIcon = styled(BiSolidShareAlt)`
   color: #fff;
@@ -159,7 +172,51 @@ export const AddIcon = styled(FaPlus)`
   height: 18px;
   width: 18px;
 `;
+export const BellIcon = styled(FaBell)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
+export const VideoIcon = styled(FaVideo)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
+export const PhoneIcon = styled(FaPhone)`
+  color: #666;
+  height: 20px;
+  width: 20px;
+`;
+export const MessageIcon = styled(BiMessageAltDetail)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
+export const AttachIcon = styled(MdOutlineAttachFile)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
+export const PictureIcon = styled(BiImage)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
+export const LocationIcon = styled(GrLocation)`
+  color: #666;
+  height: 22px;
+  width: 22px;
+`;
 export const EllipsisIcon = styled(FaEllipsisV)`
+  color: #222;
+  height: 18px;
+  width: 18px;
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
+`;
+export const EllipsisHIcon = styled(FaEllipsisH)`
   color: #222;
   height: 18px;
   width: 18px;
@@ -212,6 +269,17 @@ export const OnlineIcon = styled.div`
 `;
 
 //Dashboard
+export const DashboardContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  max-width: 1280px;
+  margin: auto;
+  align-items: flex-start;
+  grid-template-rows: auto 1fr;
+  padding: 0.7rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
 export const Table = styled.table`
   border: 1px solid #ccc;
   border-spacing: 0;
@@ -252,24 +320,13 @@ export const ActivityCard = styled(GridContainer)`
   border-radius: 8px;
 `;
 
-export const DashboardContainer = styled(GridContainer)`
-  grid-template-columns: 1fr;
-  max-width: 1280px;
-  margin: auto;
-  align-items: flex-start;
-  grid-template-rows: auto 1fr;
-  padding: 0;
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
 //Campaign
 
 export const CampaignContainer = styled(GridContainer)`
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   align-items: flex-start;
+  padding: 0.7rem;
 `;
 
 export const CampaignBody = styled(GridContainer)`
@@ -318,5 +375,146 @@ export const CampaignCardContainer = styled(GridContainer)`
   }
   & > div > small {
     color: #222;
+  }
+`;
+
+//Messages
+
+export const MessagesContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: start;
+  place-content: flex-start;
+  height: 100vh;
+`;
+export const MessagesHeader = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  justify-content: flex-end;
+  border-bottom: 1px solid #eee;
+  padding: 0.7rem;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MessagesBody = styled(GridContainer)`
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  gap: 0;
+  align-items: flex-start;
+  height: calc(100vh - 62px);
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const MessageListContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  border-right: 1px solid #eee;
+  height: 100%;
+  align-items: flex-start;
+  place-content: start;
+  /* @media screen and (max-width: 768px) {
+    display: none;
+  } */
+`;
+
+export const ChatCard = styled(GridContainer)`
+  grid-template-columns: auto 1fr auto;
+  align-items: flex-start;
+  background-color: ${(props) => (props.selected ? "#F8FAFE" : "#fff")};
+  padding: 0.7rem 1rem;
+  gap: 4px;
+  &:hover {
+    background-color: ${(props) => (props.selected ? "#F8FAFE" : "#eee")};
+    cursor: pointer;
+  }
+`;
+
+export const ChatBodyContainer = styled(GridContainer)`
+  grid-template-columns: 1fr;
+  row-gap: 0;
+  height: 100%;
+  align-items: flex-start;
+  place-content: start;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ChatBodyHeader = styled(GridContainer)`
+  grid-template-columns: auto 1fr auto;
+  padding: 0.7rem;
+  border-bottom: 1px solid #eee;
+`;
+
+export const ChatContent = styled(GridContainer)`
+  align-items: flex-start;
+  place-content: flex-start;
+  grid-template-columns: 1fr;
+  padding: 0.7rem 0.7rem 80px 0.7rem;
+  row-gap: 1rem;
+  background-color: #eee;
+  height: calc(100vh - 130px);
+  overflow: auto;
+`;
+
+export const MyChatBlock = styled.div`
+  background-color: #f1f6fd;
+  border: 1px solid #ddd;
+  padding: 0.7rem;
+  display: inline-block;
+  border-radius: 4px;
+  align-content: flex-start;
+`;
+export const OtherChatBlock = styled.div`
+  background-color: #fff;
+  display: inline-block;
+  padding: 0.7rem;
+  height: fit-content;
+  border-radius: 4px;
+  align-content: flex-start;
+`;
+
+export const ChatField = styled(GridContainer)`
+  padding: 0.7rem;
+  grid-template-columns: auto 1fr auto;
+  justify-content: flex-start;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 300px);
+  & > input {
+    border: 1px solid transparent;
+    outline: none;
+    max-width: 200px;
+    /* &:hover {
+      border: 1px solid #222;
+    } */
+  }
+
+  & > button {
+    color: #fff;
+    padding: 8px;
+    font-size: 12px;
+
+    margin: 0 1rem;
+    text-transform: uppercase;
+    background-color: #3564dd;
+    border: none;
+    border-radius: 4px;
+    &:hover {
+      cursor: pointer;
+      background-color: #3564ddbb;
+    }
   }
 `;

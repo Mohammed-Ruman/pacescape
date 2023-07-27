@@ -6,11 +6,11 @@ import AuthLayout from "./pages/Authentication/AuthLayout";
 import UserLayout from "./pages/Influencer/UserLayout";
 import Dashboard from "./pages/Influencer/Dashboard";
 import Accounts from "./pages/Influencer/Accounts";
-import Messages from "./pages/Influencer/Messages";
 import Analytics from "./pages/Influencer/Analytics";
 import Campaign from "./pages/Influencer/Campaign";
 import YoutubeLogin from "./pages/Influencer/YoutubeLogin";
 import InstagramLogin from "./pages/Influencer/InstagramLogin";
+import Messages from "./pages/Influencer/Messages/Messages";
 
 function App() {
   return (
