@@ -42,7 +42,7 @@ import { FaEllipsisH } from "react-icons/fa";
 import { LoginButton } from "../../Authentication/Auth.elements";
 const myId = 1;
 function Messages() {
-  const [selectedUser, setSelectedUser] = useState("1");
+  const [selectedUser, setSelectedUser] = useState({ id: 0, userName: "" });
   const [curChat, setCurChat] = useState();
 
   function getChatData() {
@@ -54,8 +54,8 @@ function Messages() {
     getChatData();
 
     //simulate api calls until api integration
-    if (selectedUser === 2) setCurChat(dummyChatData2);
-    else if (selectedUser === 3) setCurChat(dummyChatData3);
+    if (selectedUser.id === 2) setCurChat(dummyChatData2);
+    else if (selectedUser.id === 3) setCurChat(dummyChatData3);
   }, [selectedUser]);
   return (
     <MessagesContainer>
@@ -80,8 +80,8 @@ function Messages() {
 }
 
 function MessageList({ chatList, selectedUser, setSelectedUser }) {
-  const handleClick = (id) => {
-    setSelectedUser(id);
+  const handleClick = (id, userName) => {
+    setSelectedUser({ id: id, userName });
   };
   return (
     <MessageListContainer columns="1fr" rgap="0">
@@ -91,7 +91,7 @@ function MessageList({ chatList, selectedUser, setSelectedUser }) {
       <ScrollContainer maxHeight="100%">
         {chatList.map((cht) => (
           <ChatCard
-            onClick={() => handleClick(cht.id)}
+            onClick={() => handleClick(cht.id, cht.userName)}
             selected={selectedUser == cht.id}
           >
             <Avatar />
@@ -116,7 +116,7 @@ function ChatBody({ chatData, selectedUser }) {
             <ChatBodyHeader>
               <Avatar online={true} image={image}></Avatar>
               <GridContainer align="flex-start" justify="flex-start" rgap="4px">
-                <Heading2>Cynthia Synder</Heading2>
+                <Heading2>{selectedUser.userName}</Heading2>
                 <SmallLightText>Active Now</SmallLightText>
               </GridContainer>
               <GridContainer columns="auto auto auto">
