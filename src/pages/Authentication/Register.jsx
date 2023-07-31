@@ -12,12 +12,12 @@ import PasswordField from "../../components/ui/PasswordField";
 import SelectField from "../../components/ui/SelectField";
 
 //RTK API Hooks
-import { useRegisterMutation } from "../../api/endpoints/authEndpoints";
 
 //Form Validation
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import FileInput from "../../components/ui/FileInput";
 
 function Register() {
   const navigate = useNavigate();
@@ -33,9 +33,10 @@ function Register() {
     gender: "gender",
     dateOfBirth: "dateOfBirth",
     email: "email",
-    phone: "phone",
+    phoneNumber: "phoneNumber",
     password: "password",
     role: "role",
+    file: "file",
   };
   function reducer(state, action) {
     switch (action.type) {
@@ -49,12 +50,14 @@ function Register() {
         return { ...state, dateOfBirth: action.payload };
       case ACTIONS.email:
         return { ...state, email: action.payload };
-      case ACTIONS.phone:
-        return { ...state, phone: action.payload };
+      case ACTIONS.phoneNumber:
+        return { ...state, phoneNumber: action.payload };
       case ACTIONS.password:
         return { ...state, password: action.payload };
       case ACTIONS.role:
         return { ...state, role: action.payload };
+      case ACTIONS.file:
+        return { ...state, file: action.payload };
       default:
         return;
     }
@@ -66,23 +69,33 @@ function Register() {
     gender: "Male",
     dateOfBirth: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     password: "",
-    role: "Creator",
+    role: "brand_owner",
   });
 
-  const [register, { isLoading: isRegisterLoading }] = useRegisterMutation();
   const handleSubmit = async () => {
-    console.log(formData);
+    const form_data = new FormData();
+    for (var key in formData) {
+      form_data.append(key, formData[key]);
+    }
+
     try {
-      const response = await register(formData);
+      const res = await fetch("http://3.108.115.50:8085/user/public/signup", {
+        method: "POST",
+        body: form_data,
+      });
+      if (res.status === 200) {
+        navigate("/brandinfo", { state: { email: formData.email } });
+      }
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <LoginForm columns="1fr" rgap="8px">
+    <LoginForm columns="1fr" rgap="8px" style={{ bottom: "auto" }}>
       <Heading talign="center">Create an account</Heading>
       <LightText talign="center">Start Your 30 day free trial</LightText>
 
@@ -126,13 +139,13 @@ function Register() {
           }}
         ></TextInput>
         <TextInput
-          name="phone"
-          value={formData.phone}
+          name="phoneNumber"
+          value={formData.phoneNumber}
           minwidth="200px"
-          placeholder="12345 67890"
+          placeholder="91 12345 67890"
           title="Phone"
           onChange={(e) => {
-            dispatch({ type: ACTIONS.phone, payload: e.target.value });
+            dispatch({ type: ACTIONS.phoneNumber, payload: e.target.value });
           }}
         ></TextInput>
       </GridContainer>
@@ -162,7 +175,7 @@ function Register() {
               payload: e.target.value,
             });
           }}
-          options={["Creator", "Brand"]}
+          options={["brand_owner"]}
           title="Join as"
         ></SelectField>
         <div>
@@ -199,10 +212,32 @@ function Register() {
           </LightText>
         </div>
       </GridContainer>
+      <FileInput
+        title="Profile Picture"
+        type="file"
+        name="file"
+        onChange={(e) => {
+          dispatch({
+            type: ACTIONS.file,
+            payload: e.target.files[0],
+          });
+        }}
+      />
 
-      <PasswordField placeholder="*******" title="Password"></PasswordField>
+      <PasswordField
+        name="password"
+        value={formData.password}
+        onChange={(e) => {
+          dispatch({
+            type: ACTIONS.password,
+            payload: e.target.value,
+          });
+        }}
+        placeholder="*******"
+        title="Password"
+      ></PasswordField>
 
-      <LoginButton onClick={handleSubmit}>Sign Up</LoginButton>
+      <LoginButton onClick={handleSubmit}>Sign Up </LoginButton>
 
       <LightText talign="center">
         Been here? <AnchorText onClick={() => navigate("/")}>Login</AnchorText>

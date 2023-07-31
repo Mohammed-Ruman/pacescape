@@ -22,7 +22,7 @@ import {
   BottomNavbar,
   UserLayoutContainer,
 } from "./User.elements";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import Avatar from "./helpers/Avatar";
 import UserStack from "./helpers/UserStack";
@@ -30,6 +30,7 @@ import { dummyStackUsers } from "../../data/dummyData";
 
 function UserLayout() {
   const location = useLocation();
+ 
   const navigate = useNavigate();
 
   const handleMenuClick = (item) => {
@@ -105,7 +106,12 @@ function UserLayout() {
           </GridContainer>
           <UserStack users={dummyStackUsers} />
           <GridContainer
-            style={{ position: "absolute", bottom: "1rem", left: "1rem" ,right:"0"}}
+            style={{
+              position: "absolute",
+              bottom: "1rem",
+              left: "1rem",
+              right: "0",
+            }}
             columns="36px max-content auto"
             justify="flex-start"
           >

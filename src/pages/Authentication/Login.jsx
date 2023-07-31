@@ -16,7 +16,7 @@ function Login() {
     console.log("Login CLicked");
     try {
       const res = await login({
-        userName: userName,
+        email: userName,
         password: password,
       });
     } catch (e) {
@@ -30,8 +30,8 @@ function Login() {
       <TextInput
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
-        title="Username"
-        placeholder="John Doe"
+        title="Email"
+        placeholder="JohnDoe@gmail.com"
       ></TextInput>
       <PasswordField
         value={password}
@@ -39,9 +39,10 @@ function Login() {
         placeholder="******"
         title="Full Name"
       ></PasswordField>
+
       <LoginButton onClick={handleLogin}>Login</LoginButton>
       <LightText>
-        New to Pacescape?
+        New to Pacescape?&nbsp;
         <AnchorText onClick={() => navigate("/register")}>Register</AnchorText>
       </LightText>
     </LoginForm>

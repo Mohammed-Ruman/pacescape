@@ -47,6 +47,7 @@ export const LoginForm = styled(GridContainer)`
     top: 20vh;
     left: 0;
     right: 0;
+    bottom: 0;
     width: 100%;
     background-color: white;
     border-top-right-radius: 1rem;

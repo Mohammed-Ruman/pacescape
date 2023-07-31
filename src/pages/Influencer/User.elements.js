@@ -91,6 +91,7 @@ export const MenuItem = styled.li`
     background-color: #eee;
     &:hover {
       border: 2px solid transparent;
+      background-color: #eee;
     }
   }
 `;
@@ -423,9 +424,9 @@ export const MessageListContainer = styled(GridContainer)`
   height: 100%;
   align-items: flex-start;
   place-content: start;
-  /* @media screen and (max-width: 768px) {
-    display: none;
-  } */
+  @media screen and (max-width: 768px) {
+    display: ${(props) => (props.isSelected ? "none" : "grid")};
+  }
 `;
 
 export const ChatCard = styled(GridContainer)`
@@ -447,7 +448,9 @@ export const ChatBodyContainer = styled(GridContainer)`
   align-items: flex-start;
   place-content: start;
   @media screen and (max-width: 768px) {
-    display: none;
+    display: ${(props) => (props.isSelected ? "absolute" : "none")};
+    top: 0;
+    width: 100%;
   }
 `;
 
@@ -455,16 +458,28 @@ export const ChatBodyHeader = styled(GridContainer)`
   grid-template-columns: auto 1fr auto;
   padding: 0.7rem;
   border-bottom: 1px solid #eee;
+  & > span {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    & > span {
+      display: block;
+    }
+    grid-template-columns: ${(props) =>
+      props.isSelected ? "auto auto 1fr auto" : "auto 1fr auto"};
+  }
 `;
 
 export const ChatContent = styled(GridContainer)`
   align-items: flex-start;
   place-content: flex-start;
   grid-template-columns: 1fr;
-  padding: 0.7rem 0.7rem 80px 0.7rem;
+  
+  padding: 0.7rem ;
+  margin-bottom: 40px;
   row-gap: 1rem;
   background-color: #eee;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 170px);
   overflow: auto;
 `;
 
@@ -516,5 +531,11 @@ export const ChatField = styled(GridContainer)`
       cursor: pointer;
       background-color: #3564ddbb;
     }
+  }
+
+  @media screen and (max-width:768px) {
+    bottom: 60px;
+    background-color: #fff;
+    width: 100%;
   }
 `;

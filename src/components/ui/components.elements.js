@@ -43,8 +43,9 @@ export const Input = styled(({ ...props }) => <input {...props}></input>)`
     border: 1px solid #6c6c6c;
   }
   &:hover {
-    cursor: text;
-    border: 1px solid #6c6c6c;
+    cursor: ${(props) => (props.disabled ? "default" : "text")};
+    border: ${(props) =>
+      props.disabled ? "1px solid transparent" : "1px solid #6c6c6c"};
   }
 `;
 
