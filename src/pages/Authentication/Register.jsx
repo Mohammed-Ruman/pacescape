@@ -1,8 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Styled Components
-import { GridContainer, Heading, LightText, AnchorText } from "../../Global";
+import {
+  GridContainer,
+  Heading,
+  LightText,
+  AnchorText,
+  Heading2,
+} from "../../Global";
 import { LoginButton, LoginForm, FormContainer } from "./Auth.elements";
 import { Label } from "../../components/ui/components.elements";
 
@@ -11,16 +17,28 @@ import TextInput from "../../components/ui/TextInput";
 import PasswordField from "../../components/ui/PasswordField";
 import SelectField from "../../components/ui/SelectField";
 
-//RTK API Hooks
+//Assets
+import logo from "../../assets/images/logo.png";
 
 //Form Validation
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import FileInput from "../../components/ui/FileInput";
+import ReactModal from "react-modal";
+import { BASE_URL } from "../../utils/constants";
 
+const customStyle = {
+  content: {
+    width: "300px",
+    padding: "2rem",
+    height: "300px",
+    margin: "auto",
+  },
+};
 function Register() {
   const navigate = useNavigate();
+  const [modal, setModal] = useState(true);
   const schema = yup
     .object({
       firstName: yup.string().required(),
@@ -81,12 +99,16 @@ function Register() {
     }
 
     try {
-      const res = await fetch("http://3.108.115.50:8085/user/public/signup", {
+      const res = await fetch(`${BASE_URL}/user/public/signup`, {
         method: "POST",
         body: form_data,
       });
       if (res.status === 200) {
-        navigate("/brandinfo", { state: { email: formData.email } });
+        if (formData.role === "brand_owner") {
+          navigate("/brandinfo", { state: { email: formData.email } });
+        } else {
+          navigate("/");
+        }
       }
       console.log(res);
     } catch (e) {
@@ -94,8 +116,28 @@ function Register() {
     }
   };
 
+  const handleEmailVerify = async () => {
+    const res = await fetch(`${BASE_URL}/user/public/verify/emailtoken`, {
+      method: "POST",
+    });
+  };
+
   return (
     <LoginForm columns="1fr" rgap="8px" style={{ bottom: "auto" }}>
+      <ReactModal
+        isOpen={modal}
+        onRequestClose={() => setModal(false)}
+        style={customStyle}
+      >
+        <GridContainer>
+          <img src={logo} alt="Logo" style={{ margin: "auto" }}></img>
+          <Heading2>Verify Your email</Heading2>
+          <LightText talign="center">
+            Verification Email is sent on {formData.email}. Please Verify Your
+            email to proceed.
+          </LightText>
+        </GridContainer>
+      </ReactModal>
       <Heading talign="center">Create an account</Heading>
       <LightText talign="center">Start Your 30 day free trial</LightText>
 
@@ -175,7 +217,7 @@ function Register() {
               payload: e.target.value,
             });
           }}
-          options={["brand_owner"]}
+          options={["brand_owner", "creator"]}
           title="Join as"
         ></SelectField>
         <div>

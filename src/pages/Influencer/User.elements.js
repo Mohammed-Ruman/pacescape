@@ -8,7 +8,12 @@ import {
   BiMessageAltDetail,
   BiImage,
 } from "react-icons/bi";
-import { MdCampaign, MdAnalytics, MdOutlineAttachFile } from "react-icons/md";
+import {
+  MdCampaign,
+  MdAnalytics,
+  MdOutlineAttachFile,
+  MdLogout,
+} from "react-icons/md";
 import {
   FaBell,
   FaEllipsisH,
@@ -36,8 +41,8 @@ export const SideBarContainer = styled(GridContainer)`
   padding: 0.7rem;
   background-color: #fff;
   height: 100vh;
-  align-items: flex-start;
-  place-content: flex-start;
+  align-items: space-between;
+  place-content: space-between;
   grid-template-columns: 1fr;
   border-right: 1px solid #eee;
   @media screen and (max-width: 768px) {
@@ -115,6 +120,22 @@ export const BottomNavbar = styled.div`
     display: flex;
   }
 `;
+export const ProfileDropDown = styled.div`
+  border-radius: 1rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 250px;
+  background-color: #fff;
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  & ul>li{
+    border-bottom: 1px solid#ccc;
+  }
+`;
 
 export const AvatarContainer = styled.div`
   position: relative;
@@ -162,8 +183,17 @@ export const SettingsIcon = styled(AiOutlineSetting)`
   color: #6c6c6c;
   height: 24px;
   width: 24px;
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
 `;
 export const ShareIcon = styled(BiSolidShareAlt)`
+  color: #fff;
+  height: 18px;
+  width: 18px;
+`;
+export const LogoutIcon = styled(MdLogout)`
   color: #fff;
   height: 18px;
   width: 18px;
@@ -474,8 +504,8 @@ export const ChatContent = styled(GridContainer)`
   align-items: flex-start;
   place-content: flex-start;
   grid-template-columns: 1fr;
-  
-  padding: 0.7rem ;
+
+  padding: 0.7rem;
   margin-bottom: 40px;
   row-gap: 1rem;
   background-color: #eee;
@@ -533,7 +563,7 @@ export const ChatField = styled(GridContainer)`
     }
   }
 
-  @media screen and (max-width:768px) {
+  @media screen and (max-width: 768px) {
     bottom: 60px;
     background-color: #fff;
     width: 100%;

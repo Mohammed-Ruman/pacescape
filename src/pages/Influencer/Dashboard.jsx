@@ -7,7 +7,12 @@ import {
   LinkButton,
   ScrollContainer,
 } from "../../Global";
-import { ShareIcon, Table, DashboardContainer } from "./User.elements";
+import {
+  ShareIcon,
+  Table,
+  DashboardContainer,
+  LogoutIcon,
+} from "./User.elements";
 import image from "../../assets/images/logo.png";
 import {
   BarChart,
@@ -30,15 +35,31 @@ import {
   statisticsData,
 } from "../../data/dummyData";
 import Activities from "./helpers/Activities";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../reduxSlices/authSlice";
+import { useLazyLogoutQuery } from "../../api/endpoints/authEndpoints";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [signout, signOutResults] = useLazyLogoutQuery();
+  const counter = useSelector((state) => state.auth);
+  console.log(counter);
+  const handleLogOut = async () => {
+    const res = await signout();
+    if (signOutResults.isSuccess) {
+      dispatch(logOut());
+      navigate("/");
+    }
+  };
   return (
     <DashboardContainer>
       <GridContainer columns="auto auto " justify="space-between">
         <Heading>Dashboard</Heading>
-        <LinkButton>
-          <ShareIcon />
-          Share
+        <LinkButton onClick={handleLogOut}>
+          Logout
+          <LogoutIcon />
         </LinkButton>
       </GridContainer>
       <GridContainer

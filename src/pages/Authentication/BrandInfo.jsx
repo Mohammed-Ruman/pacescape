@@ -52,7 +52,7 @@ function BrandInfo() {
       form_data.append(key, formData[key]);
     }
     try {
-      const res = await fetch(`${BASE_URL}/user/public/brandowner/signup`, {
+      const res = await fetch(`${BASE_URL}/user/public/brand-owner/signup`, {
         method: "POST",
         body: form_data,
       });
@@ -135,7 +135,7 @@ function BrandInfo() {
         ></TextInput>
       </GridContainer>
       <FileInput
-        title="Profile Picture"
+        title="Logo"
         type="file"
         name="file"
         onChange={(e) => {

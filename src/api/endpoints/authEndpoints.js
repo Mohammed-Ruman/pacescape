@@ -48,6 +48,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
     logout: builder.query({
       query: () => "/user/public/api/v1/auth/logout",
     }),
+    getUserData: builder.query({
+      query: (email) => `/user/private/user/basicinfo?email=${email}`,
+    }),
     brandOwnerInfo: builder.mutation({
       query: (data) => ({
         url: `/user/public/brandowner/signup`,
@@ -90,8 +93,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useLogoutQuery, useBrandOwnerInfoMutation } =
-  authApiSlice;
+export const {
+  useLoginMutation,
+  useLazyLogoutQuery,
+  useBrandOwnerInfoMutation,
+  useLazyGetUserDataQuery,
+} = authApiSlice;
 
 export const { useVerifyTokenMutation, useVerifyEmailMutation } = authApiSlice;
 export const {

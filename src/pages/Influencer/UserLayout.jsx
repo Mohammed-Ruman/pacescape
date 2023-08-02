@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AnchorText,
   GridContainer,
@@ -21,17 +21,20 @@ import {
   SettingsIcon,
   BottomNavbar,
   UserLayoutContainer,
+  ProfileDropDown,
 } from "./User.elements";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import Avatar from "./helpers/Avatar";
 import UserStack from "./helpers/UserStack";
 import { dummyStackUsers } from "../../data/dummyData";
+import { useSelector } from "react-redux";
 
 function UserLayout() {
   const location = useLocation();
- 
+  const userData = useSelector((state) => state.auth.userData);
   const navigate = useNavigate();
+  const [dropDown, setDropDown] = useState(false);
 
   const handleMenuClick = (item) => {
     navigate("/user/" + item);
@@ -105,28 +108,24 @@ function UserLayout() {
             </AnchorText>
           </GridContainer>
           <UserStack users={dummyStackUsers} />
-          <GridContainer
-            style={{
-              position: "absolute",
-              bottom: "1rem",
-              left: "1rem",
-              right: "0",
-            }}
-            columns="36px max-content auto"
-            justify="flex-start"
-          >
-            <Avatar image={logo}></Avatar>
-            <GridContainer justify="flex-start" rgap="0">
-              <small>
-                <b>Craig Denis</b>
-              </small>
-              <LightText style={{ fontSize: "11px" }}>
-                cragidenis@gmail.com
-              </LightText>
-            </GridContainer>
-            <SettingsIcon />
-          </GridContainer>
         </aside>
+        <GridContainer columns="1fr auto" justify="flex-start">
+          {/* <Avatar image={logo}></Avatar> */}
+          <GridContainer justify="flex-start" rgap="0">
+            <b>{[userData?.firstName, userData?.lastName].join(" ")}</b>
+
+            <LightText style={{ fontSize: "11px" }}>
+              {userData?.email}
+            </LightText>
+          </GridContainer>
+          <SettingsIcon onClick={() => setDropDown(true)} />
+          {/* <ProfileDropDown>
+            <ul>
+              <li>My Profile</li>
+              <li>Logout</li>
+            </ul>
+          </ProfileDropDown> */}
+        </GridContainer>
       </SideBarContainer>
 
       <div style={{ position: "relative", height: "100vh" }}>
