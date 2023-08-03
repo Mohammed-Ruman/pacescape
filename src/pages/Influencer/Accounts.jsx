@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   GridContainer,
   Heading,
@@ -24,6 +24,7 @@ import {
   useGetYoutubeLinkStatusQuery,
 } from "../../api/endpoints/youtubeEndpoints";
 import { useSelector } from "react-redux";
+import { BASE_URL } from "../../utils/constants";
 function Accounts() {
   const navigate = useNavigate();
 
@@ -32,11 +33,26 @@ function Accounts() {
   const { data: linkStatus } = useGetYoutubeLinkStatusQuery(userId);
   const [authorize, authResults] = useLazyGetYoutubeAuthorizeQuery();
   const [getYoutubeData, youtubeData] = useLazyGetYoutubeDataQuery();
+  //const popupIntervalRef = useRef(null);
 
   const handleYoutubeLink = async () => {
     try {
-      const res = await authorize(userId);
-      console.log(res);
+      //const res = await authorize(userId);
+      const customUrl = `${BASE_URL}/user/public/authorize?userId=${userId}`
+      const popupWindow = window.open(customUrl, "CustomPopup", "width=600,height=600");
+     
+      window.addEventListener("beforeunload", (event) => {
+        // Get the current URL of the popup window.
+        const currentUrl = popupWindow.location.href;
+        console.log(currentUrl);
+        // If the current URL matches the specific URL, close the popup window.
+        if (currentUrl === `${BASE_URL}/user/public/welcome`) {
+          event.preventDefault();
+          popupWindow.close();
+        }
+      });
+    
+      console.log("method called");
     } catch (e) {
       console.log(e);
     }
